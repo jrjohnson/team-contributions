@@ -11,7 +11,6 @@ export default Route.extend({
     'saschaben',
     'gboushey',
     'gabycampagna',
-    'jenzweben',
     'dartajax',
     'trott',
   ],
@@ -46,7 +45,7 @@ export default Route.extend({
     const url = `https://api.github.com/users/${name}/repos?page=${page}`;
     const response = await fetch(url);
     const json = await response.json();
-    const repositoryNames = json.map(data => data.full_name + data.description + data.owner.login);
+    const repositoryNames = json.map(data => (data.full_name + data.description + data.owner.login).toLowerCase());
 
     return repositoryNames;
   }
